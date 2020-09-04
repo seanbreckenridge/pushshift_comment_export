@@ -1,4 +1,4 @@
-Exports all accessible reddit comments for an account using pushshift.
+Exports all accessible reddit comments for an account using [pushshift](https://pushshift.io/).
 
 Reddit (supposedly) only indexes the last 1000 items per query, so there are lots of comments that I don't have access to using the official reddit API (I run [`rexport`](https://github.com/karlicoss/rexport/) periodically to pick up any new data.)
 
