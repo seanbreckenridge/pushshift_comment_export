@@ -30,11 +30,13 @@ To install with pip, run:
 
 (Installs as `ps_comments`)
 
-#### HPI Usage
+#### (Personal HPI Usage)
 
 I merge this with the output of the [`rexport`](https://github.com/karlicoss/rexport/blob/master/dal.py) NamedTuple in [`my.reddit`](https://github.com/seanbreckenridge/HPI/commit/88d10ee41a027baa1146b7b6bd92a867f348abbe). The `raw` property on the pushshift/rexport values have different values, but I've standardized the `@property` values across both the `Comment` Values:
 
 ```
 <function my.reddit.comments() -> Iterator[Union[rexport.dal.Comment, pushshift_comment_export.dal.PComment]]>
 ```
+
+In case it wasn't already clear, pushshift provides me with comment data going further back than 1000 entires, which reddits API can't do. I only run `ps_comments` once, but I run [`rexport`](https://github.com/karlicoss/rexport) every couple weeks to save any new comments/saves.
 
