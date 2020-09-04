@@ -4,7 +4,7 @@ Reddit (supposedly) only indexes the last 1000 items per query, so there are lot
 
 This downloads all the comments that pushshift has, which is typically more than the 1000 query limit. This is only really meant to be used once per account, to access old data that I don't have access to.
 
-For context see the comments [`here`](https://github.com/karlicoss/rexport/#api-limitations). From what I've read on random reddit threads, doesn't seem reddit's GDPR process is worked out yet either, so not sure if that sending their legal team a request would work out well.
+For context see the comments [here](https://github.com/karlicoss/rexport/#api-limitations). From what I've read on random reddit threads, doesn't seem reddit's GDPR process is worked out yet either, so not sure if that sending their legal team a request would work out well.
 
 ```
 $ ps_comments <reddit_username> --to-file ./data.json
