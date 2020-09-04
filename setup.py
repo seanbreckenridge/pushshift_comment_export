@@ -13,7 +13,7 @@ setup(
     url='https://github.com/seanbreckenridge/pushshift_comment_export',
     author='Sean Breckenridge',
     author_email='seanbrecke@gmail.com',
-    description=('''Exports all accessible reddit comments from an account using pushshift'''),
+    description=('''Exports all accessible reddit comments for an account using pushshift'''),
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='MIT',
