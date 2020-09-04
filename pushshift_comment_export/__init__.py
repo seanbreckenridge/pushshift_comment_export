@@ -53,7 +53,7 @@ def request_all_comments(reddit_username: str):
     "--to-file",
     type=click.Path(),
     required=True,
-    help="File to store downloaded comments as JSON",
+    help="File to store downloaded comments to",
 )
 def main(reddit_username: str, to_file: str):
     """
