@@ -29,3 +29,12 @@ To install with pip, run:
     pip install 'git+https://github.com/seanbreckenridge/pushshift_comment_export'
 
 (Installs as `ps_comments`)
+
+#### HPI Usage
+
+I merge this with the output of the [`rexport`](https://github.com/karlicoss/rexport/blob/master/dal.py) NamedTuple in [`my.reddit`](https://github.com/seanbreckenridge/HPI/commit/88d10ee41a027baa1146b7b6bd92a867f348abbe). The `raw` property on the pushshift/rexport values have different values, but I've standardized the `@property` values across both the `Comment` Values:
+
+```
+<function my.reddit.comments() -> Iterator[Union[rexport.dal.Comment, pushshift_comment_export.dal.PComment]]>
+```
+
