@@ -20,7 +20,7 @@ $ ps_comments export <reddit_username> --to-file ./data.json
 [I 200903 19:52:01 __init__:64] Done! writing 4860 comments to file ./data.json
 ```
 
-pushshift doesn't require authentication, if you want to preview what this looks like, just go to <https://api.pushshift.io/reddit/comment/search?author={username}>
+pushshift doesn't require authentication, if you want to preview what this looks like, just go to <https://api.pushshift.io/reddit/comment/search?author=>
 
 ### Install
 
