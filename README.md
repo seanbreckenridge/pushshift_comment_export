@@ -30,7 +30,7 @@ To install with pip, run:
 
     pip install 'git+https://github.com/seanbreckenridge/pushshift_comment_export'
 
-(Installs as `ps_comments`)
+Is accessible as the script `ps_comments`, or by using `python3 -m pushshift_comment_export`.
 
 #### (Personal HPI Usage)
 

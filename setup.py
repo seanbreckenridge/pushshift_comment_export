@@ -20,7 +20,7 @@ setup(
     packages=find_packages(include=['pushshift_comment_export']),
     install_requires=requirements,
     keywords='reddit data',
-    entry_points={"console_scripts": ["ps_comments = pushshift_comment_export:main"]},
+    entry_points={"console_scripts": ["ps_comments = pushshift_comment_export.__main__:main"]},
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
