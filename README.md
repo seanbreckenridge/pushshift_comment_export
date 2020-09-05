@@ -6,6 +6,8 @@ This downloads all the comments that pushshift has, which is typically more than
 
 For context see the comments [here](https://github.com/karlicoss/rexport/#api-limitations). From what I've read on random reddit threads, doesn't seem reddit's GDPR process is worked out yet either, so not sure if that sending their legal team a request would work out well.
 
+Complies to the rate limit [described here](https://github.com/dmarx/psaw#features)
+
 ```
 $ ps_comments <reddit_username> --to-file ./data.json
 .....
