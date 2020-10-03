@@ -22,7 +22,7 @@ def ps_request(url):
 
 # paginate through pushshift comments for a user, by specifying an epoch time
 # to receive comments before
-# once we recieve the first chunk of comments, use the epoch time of the
+# once we receive the first chunk of comments, use the epoch time of the
 # last currently known comment, and filter anything that was posted after that
 def create_url(reddit_username: str, before: Optional[int]):
     if before is None:
