@@ -9,7 +9,7 @@
 import json
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Any, Dict, Iterator, NamedTuple
+from typing import Any, Dict, Iterator, NamedTuple, Set, Tuple
 
 Json = Dict[str, Any]
 
@@ -40,7 +40,8 @@ class PComment(NamedTuple):
 
     @property
     def text(self) -> str:
-        return self.raw["body"]
+        body_text: str = self.raw["body"]
+        return body_text
 
 
 # I only ever do one export of this, so don't need to worry
