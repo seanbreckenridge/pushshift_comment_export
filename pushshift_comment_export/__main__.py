@@ -6,7 +6,7 @@ from typing import Optional, Dict, Any, List
 import requests
 import click
 import backoff  # type: ignore[import]
-from logzero import logger # type: ignore[import]
+from logzero import logger  # type: ignore[import]
 
 BASE_PUSHSHIFT_URL = "https://api.pushshift.io/reddit/comment/search?author={}&limit=100&sort_type=created_utc&sort=desc"  # &before=epochint
 
