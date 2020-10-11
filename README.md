@@ -1,5 +1,19 @@
 Exports all accessible reddit comments for an account using [pushshift](https://pushshift.io/).
 
+[![PyPi version](https://img.shields.io/pypi/v/pushshift_comment_export.svg)](https://pypi.python.org/pypi/pushshift_comment_export) [![Python 3.6|3.7|3.8](https://img.shields.io/pypi/pyversions/pushshift_comment_export.svg)](https://pypi.python.org/pypi/pushshift_comment_export) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+### Install
+
+Requires `python3.6+`
+
+To install with pip, run:
+
+    pip install pushshift_comment_export
+
+Is accessible as the script `ps_comments`, or by using `python3 -m pushshift_comment_export`.
+
+---
+
 Reddit (supposedly) only indexes the last 1000 items per query, so there are lots of comments that I don't have access to using the official reddit API (I run [`rexport`](https://github.com/karlicoss/rexport/) periodically to pick up any new data.)
 
 This downloads all the comments that pushshift has, which is typically more than the 1000 query limit. This is only really meant to be used once per account, to access old data that I don't have access to.
@@ -21,16 +35,6 @@ $ ps_comments <reddit_username> --to-file ./data.json
 ```
 
 pushshift doesn't require authentication, if you want to preview what this looks like, just go to <https://api.pushshift.io/reddit/comment/search?author=>
-
-### Install
-
-Requires `python3.6+`
-
-To install with pip, run:
-
-    pip install 'git+https://github.com/seanbreckenridge/pushshift_comment_export'
-
-Is accessible as the script `ps_comments`, or by using `python3 -m pushshift_comment_export`.
 
 #### (Personal HPI Usage)
 
