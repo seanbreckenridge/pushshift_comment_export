@@ -9,7 +9,7 @@ with io.open("README.md", encoding="utf-8") as fo:
 
 setup(
     name="pushshift_comment_export",
-    version="0.1.0",
+    version="0.1.1",
     url="https://github.com/seanbreckenridge/pushshift_comment_export",
     author="Sean Breckenridge",
     author_email="seanbrecke@gmail.com",
