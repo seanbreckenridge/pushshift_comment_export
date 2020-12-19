@@ -9,7 +9,7 @@
 import json
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Any, Dict, Iterator, NamedTuple, Set, Tuple
+from typing import Any, Dict, Iterator, NamedTuple
 
 Json = Dict[str, Any]
 
@@ -48,8 +48,6 @@ class PComment(NamedTuple):
 # about merging duplicates here. However, will have to merge
 # in HPI
 def read_file(p: Path) -> Iterator[PComment]:
-    # datetime utc, subreddit
-    emitted: Set[Tuple[int, str]] = set()
     with p.open("r") as cf:
         items = json.load(cf)
     for comm in items:
