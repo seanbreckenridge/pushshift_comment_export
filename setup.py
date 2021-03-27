@@ -1,11 +1,9 @@
-import io
+from pathlib import Path
 from setuptools import setup, find_packages
 
-requirements = ["logzero", "backoff", "requests", "click"]
+long_description = Path("README.md").read_text()
+reqs = Path("requirements.txt").read_text().strip().splitlines()
 
-# Use the README.md content for the long description:
-with io.open("README.md", encoding="utf-8") as fo:
-    long_description = fo.read()
 
 pkg = "pushshift_comment_export"
 setup(
@@ -21,7 +19,7 @@ setup(
     long_description_content_type="text/markdown",
     license="MIT",
     packages=find_packages(include=[pkg]),
-    install_requires=requirements,
+    install_requires=reqs,
     package_data={pkg: ["py.typed"]},
     keywords="reddit data",
     entry_points={
