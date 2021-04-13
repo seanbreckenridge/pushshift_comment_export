@@ -7,11 +7,21 @@
 # runtime checks to resolve type conflicts/structure
 
 import json
+import re
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Any, Dict, Iterator, NamedTuple
 
 Json = Dict[str, Any]
+
+# https://www.reddit.com/dev/api
+TYPE_PREFIX = re.compile("t[1-6]_")
+
+def _remove_type_prefix(link: str) -> str:
+    if re.match(TYPE_PREFIX, link):
+        return link[3:]
+    else:
+        return link
 
 
 def reddit(suffix: str) -> str:
@@ -31,9 +41,12 @@ class PComment(NamedTuple):
     def url(self) -> str:
         if "permalink" not in self.raw:
             r = self.raw
-            # old items don't have permanlinks, reconstruct from link_id/parent_id
+            # old items don't have permalinks, reconstruct from link_id/parent_id
+            # https://www.reddit.com/dev/api - search 'type prefix'
+            link_id = _remove_type_prefix(r["link_id"])
+            parent_id = _remove_type_prefix(r["parent_id"])
             return reddit(
-                f"/r/{r['subreddit']}/comments/{r['link_id']}/foo/{r['parent_id']}/"
+                f"/r/{r['subreddit']}/comments/{link_id}/x/{parent_id}/"
             )
         else:
             return reddit(self.raw["permalink"])
