@@ -47,4 +47,3 @@ I merge this with the output of the [`rexport`](https://github.com/karlicoss/rex
 ```
 
 In case it wasn't already clear, pushshift provides me with comment data going further back than 1000 entires, which reddits API can't do. I only run `ps_comments` once, but I run [`rexport`](https://github.com/karlicoss/rexport) every couple weeks to save any new comments/saves.
-

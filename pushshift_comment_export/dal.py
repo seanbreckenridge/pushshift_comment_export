@@ -10,12 +10,13 @@ import json
 import re
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Any, Dict, Iterator, NamedTuple
+from typing import Any, Dict, Iterator, NamedTuple, cast
 
 Json = Dict[str, Any]
 
 # https://www.reddit.com/dev/api
 TYPE_PREFIX = re.compile("t[1-6]_")
+
 
 def _remove_type_prefix(link: str) -> str:
     if re.match(TYPE_PREFIX, link):
@@ -34,6 +35,10 @@ class PComment(NamedTuple):
     raw: Json
 
     @property
+    def id(self) -> str:
+        return cast(str, self.raw["id"])
+
+    @property
     def created(self) -> datetime:
         return datetime.fromtimestamp(self.raw["created_utc"], tz=timezone.utc)
 
@@ -45,16 +50,13 @@ class PComment(NamedTuple):
             # https://www.reddit.com/dev/api - search 'type prefix'
             link_id = _remove_type_prefix(r["link_id"])
             parent_id = _remove_type_prefix(r["parent_id"])
-            return reddit(
-                f"/r/{r['subreddit']}/comments/{link_id}/x/{parent_id}/"
-            )
+            return reddit(f"/r/{r['subreddit']}/comments/{link_id}/x/{parent_id}/")
         else:
             return reddit(self.raw["permalink"])
 
     @property
     def text(self) -> str:
-        body_text: str = self.raw["body"]
-        return body_text
+        return cast(str, self.raw["body"])
 
 
 # I only ever do one export of this, so don't need to worry
