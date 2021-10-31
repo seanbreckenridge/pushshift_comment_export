@@ -20,7 +20,7 @@ This downloads all the comments that pushshift has, which is typically more than
 
 For more context see the comments [here](https://github.com/karlicoss/rexport/#api-limitations).
 
-Reddit has recently added a [data request](https://www.reddit.com/settings/data-request) which may let you get comments going further back; I have yet to parse my export - will update this README when I do.
+Reddit has recently added a [data request](https://www.reddit.com/settings/data-request) which may let you get comments going further back, but pushshifts JSON response contains a bit more info than what the GDPR request does
 
 Complies to the rate limit [described here](https://github.com/dmarx/psaw#features)
 
@@ -38,12 +38,29 @@ $ ps_comments <reddit_username> --to-file ./data.json
 
 pushshift doesn't require authentication, if you want to preview what this looks like, just go to <https://api.pushshift.io/reddit/comment/search?author=>
 
-#### (Personal HPI Usage)
+#### Usage in HPI
 
-I merge this with the output of the [`rexport`](https://github.com/karlicoss/rexport/blob/master/dal.py) NamedTuple in [`my.reddit`](https://github.com/seanbreckenridge/HPI/commit/88d10ee41a027baa1146b7b6bd92a867f348abbe). The `raw` property on the pushshift/rexport values have different values, but I've standardized the `@property` values across both the `Comment` Values:
+This has been merged into [karlicoss/HPI](https://github.com/karlicoss/HPI), which combines the periodic results of `rexport` (to pick up new comments), with any from the past using this, which looks like [this](https://github.com/karlicoss/HPI/tree/master/my/reddit); my config looking like:
+
+```reddit
+class reddit:
+    class rexport:
+        export_path: Paths = "~/data/rexport/*.json"
+    class pushshift:
+        export_path: Paths = "~/data/pushshift/*.json"
+```
+
+Then importing from `my.reddit.all` combines the data from both of them:
 
 ```
-<function my.reddit.comments() -> Iterator[Union[rexport.dal.Comment, pushshift_comment_export.dal.PComment]]>
+>>> from my.reddit.rexport import comments as rcomments
+>>> from my.reddit.pushshift import comments as pcomments
+>>> from my.reddit.all import comments
+>>> from more_itertools import ilen
+>>> ilen(rcomments())
+1020
+>>> ilen(pcomments())
+4891
+>>> ilen(comments())
+4914
 ```
-
-In case it wasn't already clear, pushshift provides me with comment data going further back than 1000 entires, which reddits API can't do. I only run `ps_comments` once, but I run [`rexport`](https://github.com/karlicoss/rexport) every couple weeks to save any new comments/saves.
