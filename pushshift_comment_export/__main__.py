@@ -11,13 +11,13 @@ from logzero import logger  # type: ignore[import]
 BASE_PUSHSHIFT_URL = "https://api.pushshift.io/reddit/comment/search?author={}&limit=100&sort_type=created_utc&sort=desc"  # &before=epochint
 
 # rate limiter for pushshift
-@backoff.on_exception(backoff.expo, requests.exceptions.RequestException)
-def ps_request(url: str) -> Dict[str, Any]:
+@backoff.on_exception(backoff.expo, requests.exceptions.RequestException, max_tries=5)
+def ps_request(url: str) -> List[Dict[str, Any]]:
     logger.debug("Requesting {}...".format(url))
     resp: requests.Response = requests.get(url)
     time.sleep(2)
     resp.raise_for_status()
-    data: Dict[str, Any] = resp.json()["data"]
+    data: List[Dict[str, Any]] = resp.json()["data"]
     return data
 
 
