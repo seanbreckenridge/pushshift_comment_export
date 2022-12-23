@@ -23,7 +23,10 @@ setup(
     package_data={pkg: ["py.typed"]},
     keywords="reddit data",
     entry_points={
-        "console_scripts": ["ps_comments = pushshift_comment_export.__main__:main"]
+        "console_scripts": [
+            "ps_comments = pushshift_comment_export.__main__:main",
+            "pushshift_comment_export = pushshift_comment_export.__main__:main",
+        ]
     },
     classifiers=[
         "License :: OSI Approved :: MIT License",

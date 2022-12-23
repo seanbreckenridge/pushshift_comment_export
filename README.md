@@ -10,7 +10,7 @@ To install with pip, run:
 
     pip install pushshift_comment_export
 
-Is accessible as the script `ps_comments`, or by using `python3 -m pushshift_comment_export`.
+Is accessible as the script `pushshift_comment_export`, or by using `python3 -m pushshift_comment_export`.
 
 ---
 
@@ -25,7 +25,7 @@ Reddit has recently added a [data request](https://www.reddit.com/settings/data-
 Complies to the rate limit [described here](https://github.com/dmarx/psaw#features)
 
 ```
-$ ps_comments <reddit_username> --to-file ./data.json
+$ pushshift_comment_export <reddit_username> --to-file ./data.json
 .....
 [D 200903 19:51:49 __init__:43] Have 4700, now searching for comments before 2015-10-07 23:32:03...
 [D 200903 19:51:49 __init__:17] Requesting https://api.pushshift.io/reddit/comment/search?author=username&limit=100&sort_type=created_utc&sort=desc&before=1444260723...
