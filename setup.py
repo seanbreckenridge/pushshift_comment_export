@@ -8,7 +8,7 @@ reqs = Path("requirements.txt").read_text().strip().splitlines()
 pkg = "pushshift_comment_export"
 setup(
     name=pkg,
-    version="0.1.3",
+    version="0.1.4",
     url="https://github.com/seanbreckenridge/pushshift_comment_export",
     author="Sean Breckenridge",
     author_email="seanbrecke@gmail.com",
