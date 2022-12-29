@@ -8,7 +8,7 @@ import click
 import backoff  # type: ignore[import]
 from logzero import logger  # type: ignore[import]
 
-BASE_PUSHSHIFT_URL = "https://api.pushshift.io/reddit/comment/search?author={}&limit=100&sort_type=created_utc&sort=desc"  # &before=epochint
+BASE_PUSHSHIFT_URL = "https://api.pushshift.io/reddit/comment/search?q=&author={}&limit=100&sort=created_utc&order=desc"  # &before=epochint
 
 # rate limiter for pushshift
 @backoff.on_exception(backoff.expo, requests.exceptions.RequestException, max_tries=5)
