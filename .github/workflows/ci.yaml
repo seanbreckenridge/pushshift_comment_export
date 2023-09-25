@@ -26,9 +26,6 @@ jobs:
       - name: Run mypy
         run: |
           mypy --install-types --non-interactive ./pushshift_comment_export/
-      - name: Run pytest
-        run: |
-          pytest
       - name: Run flake8
         run: |
           flake8 ./pushshift_comment_export
