@@ -2,6 +2,14 @@ Exports all accessible reddit comments for an account using [pushshift](https://
 
 [![PyPi version](https://img.shields.io/pypi/v/pushshift_comment_export.svg)](https://pypi.python.org/pypi/pushshift_comment_export) [![Python 3.6|3.7|3.8](https://img.shields.io/pypi/pyversions/pushshift_comment_export.svg)](https://pypi.python.org/pypi/pushshift_comment_export) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
+# REDDIT API CHANGES
+
+Since the API restrictions on reddit, the terms of use for pushshift have changed, see <https://pushshift.io/signup>
+
+I no longer use this (I only really used it once to get all my historical data), but in order to use this one would need to supply a pushshift API token. Since I don't meet the terms of use ('user certifies that they are a registered user of Reddit and a Reddit moderator (a “Mod") and may only access Reddit Services and Data through Pushshift Services for the express limited purposes of community moderation, enforcing Reddit community guidelines, and ensuring community member safety'), I don't see a reason to update this for myself, but if someone else wants to make a PR, feel free to do so.
+
+You should be able to get your historical data through the [data request](https://www.reddit.com/settings/data-request), if all you want is to backup your data.
+
 ### Install
 
 Requires `python3.6+`
