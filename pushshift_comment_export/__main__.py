@@ -5,19 +5,37 @@ from typing import Optional, Dict, Any, List
 
 import requests
 import click
-import backoff  # type: ignore[import]
+import backoff
+from backoff.types import Details
 from logzero import logger  # type: ignore[import]
 
 BASE_PUSHSHIFT_URL = "https://api.pushshift.io/reddit/comment/search?q=&author={}&limit=100&sort=created_utc&order=desc"  # &before=epochint
 
 
+def backoff_details(details: Details) -> None:
+    logger.warning(
+        "Backing off {wait:0.1f} seconds after {tries} tries calling function {target} with args {args} and kwargs {kwargs}".format(
+            **details
+        )
+    )
+
+
 # rate limiter for pushshift
-@backoff.on_exception(backoff.expo, requests.exceptions.RequestException, max_tries=5)
+@backoff.on_exception(
+    backoff.expo,
+    requests.exceptions.RequestException,
+    max_tries=3,
+    on_backoff=backoff_details,
+)
 def ps_request(url: str) -> List[Dict[str, Any]]:
     logger.debug("Requesting {}...".format(url))
     resp: requests.Response = requests.get(url)
     time.sleep(2)
-    resp.raise_for_status()
+    if resp.status_code != 200:
+        logger.error(
+            "Request to {} failed with status code {}".format(url, resp.status_code)
+        )
+        resp.raise_for_status()
     data: List[Dict[str, Any]] = resp.json()["data"]
     return data
 
